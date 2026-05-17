@@ -10,10 +10,22 @@ jobs:
     steps:
       - name: Code Checkout
         uses: actions/checkout@v4
-      - name: Set very short SHA
-        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+      - name: Build docker Image
+        run: "docker build -t eliassal/pyapp:${GITHUB_SHA::7} ."
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: "${{ secrets.DOCKER_USERNAME }}"
           password: "${{ secrets.DOCKER_PASSWORD }}"
+      - name: Push Docker Image
+        run: "docker push eliassal/pyapp:${GITHUB_SHA::7}"
+      - name: Install yq
+        uses: mikefarah/yq@v4.44.3
+
+      - name: Update deployment.yml with latest docker tag Deployment
+      run: |
+        # Short commit hash
+        SHORT_SHA=${GITHUB_SHA::7}
+        # Update image tag in deployment.yaml
+        yq -i '.spec.template.spec.containers[0].image = "eliassal/gha-pyapp:'"$SHORT_SHA"'"' ./k8s/pyapp-deployment.yml
