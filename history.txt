@@ -1,0 +1,51 @@
+aws --version
+aws sts get-caller-identity
+aws login --profile sieracProfile
+aws sts get-caller-identity --profile sieracProfile
+sksctl
+eksctl
+eksctl
+clear
+
+aws sts get-caller-identity --profile sieracProfile
+eksctl create cluster --name jhc-cluster --nodegroup-name ng-1 --node-type t3.medium --nodes 2 --nodes-min 1 --nodes-max 3 --profile sieracProfile
+kubectl get nodes
+ ~/.kube
+ls  ~/.kube
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl get pods -n argocd
+kubectl get svc -n argocd
+kubectl edit svc argocd-server -n argocd
+kubectl get svc -n argocd
+						kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d; echo (this is on linux)
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" |`
+    % { [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) }
+ls
+git clone https://github.com/javahometech/gha-eks.git
+history
+kubectl get nodes
+cd C:\Projects\AzureDevOpsProjects\Git-Manip\GitHubActions-Guide\
+ls
+cd gha-eks
+ls
+docker build -t eliassal/pyapp:v1 .
+
+4        0.007 cd C:\Projects\AzureDevOpsProjects\Git-Manip\GitHubActions-Guide\gha-eks
+   5        0.038 ls
+   6        0.004 cd gha-eks
+   7        0.036 ls
+   8     9:03.407 docker build -t eliassal/pyapp:v1 .
+   9        8.417 docker push eliassal/pyapp:v1
+  10        1.908 kubectl get nodes
+  11        0.006 cd k8s
+  12        0.368 kubectl apply ./
+  13        0.373 kubectl
+  14        2.672 kubectl apply -f .
+  15        0.418 kubcetl get pods
+  16        0.351 kubctl get pods
+  17        1.915 kubectl get pods
+  18        1.878 kubectl get pods
+  19        3.017 kubectl get svc
+  20        2.001 eksctl delete cluster --name jhc-cluster
+  21     7:43.605 eksctl delete cluster --name jhc-cluster --profile sieracProfile
