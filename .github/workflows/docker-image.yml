@@ -29,8 +29,8 @@ jobs:
           yq -i '.spec.template.spec.containers[0].image = "eliassal/pyapp:'"$SHORT_SHA"'"' ./k8s/pyapp-deployment.yml
       - name: Commit deployment file changes
         run: |
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions@noreply"
+            git config user.name "eliassal"
+            git config user.email "salamadmin@free.fr"
             git add k8s/pyapp-deployment.yml
             git commit -m 'docker tag updated by GHA' || echo "Already commited changes"
             git push origin main
