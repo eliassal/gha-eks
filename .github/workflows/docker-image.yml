@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Code Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Build docker Image
         run: docker build -t eliassal/pyapp:${GITHUB_SHA::7} .
       - name: Login to Docker Hub
